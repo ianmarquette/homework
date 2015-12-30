@@ -1,0 +1,111 @@
+/* Mixins
+   ========================================================================== */
+
+/* REM to PX Fallback */
+
+// Mixin that allows to specify arbitrary CSS properties with
+// unitless numbers. The output has rem unit with pixel fallback.
+// Shorthand assignments are supported too!
+$base_line: 16;
+
+@mixin rem($property, $values)
+{
+  // Placeholder variables
+  $shorthand_px:  "";
+  $shorthand_rem: "";
+
+  // Parameter $values might be a list of elements
+  @each $value in $values
+  {
+    // Current value is a valid number and greater than 0
+    @if $value != auto and $value != 0
+    {
+      // Add 'px' and 'rm' to the current value and store in
+      // placeholder variables
+      $shorthand_px: #{ $shorthand_px + " " + $value * $base_line + px };
+      $shorthand_rem: #{ $shorthand_rem + " " + $value + rem };
+    }
+    // Current value is 'auto' or 0
+    @else
+    {
+      // Add only 'auto' or 0 to the placeholder variables
+      $shorthand_px: #{ $shorthand_px + " " + $value };
+      $shorthand_rem: #{ $shorthand_rem + " " + $value };
+    }
+  }
+
+  // Output the CSS property in pixels and rems
+  #{$property}:$shorthand_px;
+  #{$property}:$shorthand_rem;
+}
+
+// Examples
+//
+// body
+// {
+//   @include rem(font-size, $bodyFontSize);
+//   @include rem(padding, 0 $bodyFontSize);
+// }
+//
+// .wrapper
+// {
+//  @include rem(margin, 0 auto $bodyFontSize);
+// }
+
+@mixin linearGradient($top, $bottom, $topValue: 0%, $bottomValue: 100%){
+
+    background: $top; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top $topValue, $bottom $bottomValue); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop($topValue,$top), color-stop($bottomValue,$bottom)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top $topValue,$bottom $bottomValue); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top $topValue,$bottom $bottomValue); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top $topValue,$bottom $bottomValue); /* IE10+ */
+    background: linear-gradient(to bottom,  $top $topValue,$bottom $bottomValue); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+  }
+
+// Example
+//
+// .button{
+//    @include linearGradient(#cccccc, #666666);
+//  }
+
+
+
+/* Media Queries */
+
+@mixin breakpoint($point) {
+  @if $point == x-large-bp {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == large-bp {
+    @media (min-width: 992px) { @content; }
+  }
+  @else if $point == medium-bp {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $point == small-bp {
+    @media (min-width: 480px)  { @content; }
+  }
+  // @else {
+  //   @media (min-width: $point + px)  { @content; }
+  // }
+}
+
+// Examples
+//
+// .page-wrap {
+//    width: 75%;
+//    @include breakpoint(large-bp) { width: 60%; }
+//    @include breakpoint(medium-bp) { width: 80%; }
+//    @include breakpoint(small-bp) { width: 95%; }
+//  
+
+
+/* Hide Text */
+
+@mixin hide-text{
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}

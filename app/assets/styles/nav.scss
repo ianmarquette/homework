@@ -1,0 +1,126 @@
+
+.slicknav_btn {
+	position: relative;
+    display: block;
+    vertical-align: middle;
+    float: right;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+	.slicknav_icon-bar + .slicknav_icon-bar {
+		margin-top: 0.32rem;
+	}
+}
+.slicknav_menu {
+	display: block;
+	float: right;
+	width: 100%;
+	*zoom: 1;
+
+	@include breakpoint(large-bp) {
+      display: none;
+    }
+
+	.slicknav_menutxt {
+		display: block;
+		line-height: 1.188em;
+		float: left;
+	}
+	.slicknav_icon {
+		float: left;
+        width: 1.5rem;
+        height: 0.875em;
+		margin: 0.188em 0 0 0.438em;
+        &:before { // Firefox Mobile v42 bugfix
+            background: transparent;
+            width: 1.125em;
+            height: 0.875em;
+            display: block;
+            content: "";
+            position: absolute;
+        }
+	}
+	.slicknav_no-text {
+		margin: 0;
+	}
+	.slicknav_icon-bar {
+		display: block;
+		width: 100%;
+		height: 0.125em;
+		-webkit-border-radius: 1px;
+		-moz-border-radius: 1px;
+		border-radius: 1px;
+		-webkit-box-shadow: 0 2px 0 $brown;
+		-moz-box-shadow: 0 2px 0 $brown;
+		box-shadow: 0 2px 0 $brown;
+	}
+	&:before {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+}
+.slicknav_nav {
+	clear: both;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	ul {
+		display: block;
+		margin: 0;
+	}
+	li {
+		display: block;
+		float: left;
+		width: 100%;
+	}
+
+	.primary-nav__item,
+	.primary-nav__item--selected {
+		color: $white;
+		background-color: $flat-dark-green;
+		border: 1px solid $beige;
+		border-left-width: 0px;
+		border-right-width: 0px;
+
+		a {
+			color: $white;
+		}
+
+		&:last-of-type {
+			border-bottom-width: 0px;
+		}
+	}
+
+	.primary-nav__item--selected {
+		border-radius: 0;
+		margin-top: 0;
+		padding-top: 0;
+	}
+	.slicknav_arrow {
+		font-size: 0.8em;
+		margin: 0 0 0 0.4em;
+	}
+	.slicknav_item {
+		cursor: pointer;
+		a {
+			display: inline;
+		}
+	}
+	.slicknav_row {
+		display: block;
+	}
+	a {
+		display: block;
+	}
+	.slicknav_parent-link a {
+		display: inline;
+	}
+}
+.slicknav_brand {
+	float: left;
+}

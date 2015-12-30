@@ -1,0 +1,160 @@
+.btn-close {
+  color: $brown;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  right: 5px;
+  top: 0px;
+}
+
+
+.modal:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.modal:target:before {
+  display: block;
+}
+.modal:target .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 5%;
+
+  @include breakpoint(medium-bp) {
+      top: 0%;
+    }
+}
+.modal-dialog {
+  background: $white;
+  border: #e6e6dd solid 1px;
+  border-radius: 5px;
+  // margin-left: -200px;
+  position: fixed;
+  left: calc(50% - 11.2rem);
+  top: -100%;
+  z-index: 11;
+  margin: 0.25rem;
+  width: auto;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+
+  @include breakpoint(small-bp) {
+    left: calc(50% - 12.5rem);
+    margin: 1rem auto;
+    width: 25rem;
+    }
+
+}
+.modal-body {
+  padding: 1.25rem;
+}
+.modal-header,
+.modal-footer {
+  padding: 1rem 1.25rem;
+}
+.modal-header {
+  border-bottom: #e6e6dd solid 1px;
+}
+.modal-header h2 {
+  @include rem(font-size, 1.25);
+  color: $brown;
+  float: none;
+  font-weight: 900;
+  margin: 0;
+}
+.modal-footer {
+  border-top: #e6e6dd solid 1px;
+  text-align: right;
+}
+/*ADDED TO STOP SCROLLING TO TOP*/
+#close {
+  display: none;
+}
+
+fieldset {
+  border-width: 0px;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+label, legend {
+  @include rem(font-size, 0.875);
+  color: $brown;
+  font-weight: 900;
+  margin-right: 1rem;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+input[type="number"] {
+  // float: right;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="number"]  {
+  @include rem(font-size, 0.875);
+  color: $brown-grey;
+  padding: 0.75rem;
+
+  &:focus {
+    border-color: $green;
+  }
+}
+
+.label-top {
+  vertical-align: top;
+}
+
+.multi-select {
+  border-color: #e6e6dd;
+  width: 100%;
+
+  @include breakpoint(medium-bp) {
+      width: 48%;
+    }
+
+  option {
+    @include rem(font-size, 0.875);
+    color: $brown-grey;
+    padding: 0.25rem;
+  }
+}
+
+.btn-submit {
+  @include linearGradient($light-green, $green);
+  border: 1px solid #7e9e6c;
+  border-radius: 3px;
+  color: $white;
+  font-weight: 900;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #dfffc2;
+  -moz-box-shadow: inset 0px 1px 0px 0px #dfffc2;
+  box-shadow: inset 0px 1px 0px 0px #dfffc2;
+  display: block;
+  padding: 0.5rem;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+
+  &:active, &:focus {
+    @include linearGradient($green, $light-green);
+    -webkit-box-shadow: 0px 1px 0px 0px $light-brown;
+    -moz-box-shadow: 0px 1px 0px 0px $light-brown;
+    box-shadow: 0px 1px 0px 0px $light-brown;
+  }
+}
